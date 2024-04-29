@@ -11,13 +11,16 @@ function checkPositive() {
 }
 
 function checkMultiple() {
-  if (num % 3 == 0 || num % 7 == 0) {
-    console.log(`${num} is divisible by 3 or 7`);
-    if (num % 3 == 0) {
-      console.log("But exactly by 3");
-    } else console.log("But exactly by 7");
+  if (num % 3 == 0 && num % 7 == 0) {
+    if (num % 3 == 0 && num % 7 != 0) {
+      console.log("Exactly divisible by 3");
+    } else if (num % 7 == 0) {
+      console.log("Exactly divisible by 7");
+    } else {
+      console.log(`${num} is divisible by 3 or 7`);
+    }
   } else {
-    console.log(`${num} is not divisible by 3 or 7`);
+    console.log("Not divisible by 3 and 7");
   }
 }
 
