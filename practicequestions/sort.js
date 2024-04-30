@@ -13,8 +13,3 @@ console.log(result);
 let number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 number.sort((a, b) => {});
-//const data=[]
-//const page;
-//const limit;
-// write a js function that takes in data,page and limit and return the data
-//[3,4]
