@@ -32,5 +32,9 @@ const characters = [
 let totalMass = characters.reduce((total, nex) => {
   return total + Number(nex.mass);
 }, 0);
+let totalHeight = characters.reduce((total, nex) => {
+  return total + Number(nex.height);
+}, 0);
 
 console.log(totalMass);
+console.log(totalHeight);
