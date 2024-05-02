@@ -30,6 +30,6 @@ const characters = [
 ];
 
 let arr = characters.map((item) => {
-  return item;
+  return item.name;
 });
 console.log(arr);
