@@ -29,7 +29,21 @@ const characters = [
   },
 ];
 
-let arr = characters.map((item) => {
+let nameArr = characters.map((item) => {
   return item.name;
 });
-console.log(arr);
+console.log(nameArr);
+
+let heightArr = characters.map((item) => {
+  return item.height;
+});
+console.log(heightArr);
+let newArr = characters.map((item) => {
+  return { name: item.name, height: item.height };
+});
+console.log(newArr);
+
+let firstName = characters.map((items) => items.name.split(" "));
+
+console.log(firstName);
+console.log(firstNameOnly);
