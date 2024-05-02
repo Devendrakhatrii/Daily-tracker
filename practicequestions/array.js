@@ -6,3 +6,4 @@ const check = (systemRole, userRole) => {
 };
 
 console.log(check(roleA, roleB));
+
