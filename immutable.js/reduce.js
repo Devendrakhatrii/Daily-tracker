@@ -38,3 +38,8 @@ let totalHeight = characters.reduce((total, nex) => {
 
 console.log(totalMass);
 console.log(totalHeight);
+
+let nameLength = characters.reduce((acc, char) => {
+  return acc + char.name.length;
+}, 0);
+console.log(nameLength);
