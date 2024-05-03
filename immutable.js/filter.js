@@ -31,3 +31,5 @@ const characters = [
 
 let massRequirement = characters.filter((item) => item.mass > 100);
 console.log(massRequirement);
+let heightRequirement = characters.filter((item) => item.height < 200);
+console.log(heightRequirement);
