@@ -35,3 +35,5 @@ let heightRequirement = characters.filter((item) => item.height < 200);
 console.log(heightRequirement);
 let males = characters.filter((item) => item.gender === "male");
 console.log(males);
+let females = characters.filter((item) => item.gender === "female");
+console.log(females);
