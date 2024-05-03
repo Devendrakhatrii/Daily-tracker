@@ -1,12 +1,5 @@
 const characters = [
   {
-    name: "Luke Skywalker",
-    height: "172",
-    mass: "77",
-    eye_color: "blue",
-    gender: "male",
-  },
-  {
     name: "Darth Vader",
     height: "202",
     mass: "136",
@@ -43,3 +36,14 @@ let nameLength = characters.reduce((acc, char) => {
   return acc + char.name.length;
 }, 0);
 console.log(nameLength);
+
+let eyeColors = characters.reduce((init, curr) => {
+  if (init[curr.eye_color]) {
+    init[curr.eye_color]++;
+  } else {
+    init[curr.eye_color] = 1;
+  }
+  return init;
+}, {});
+
+console.log(eyeColors);
