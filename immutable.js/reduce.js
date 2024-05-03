@@ -1,5 +1,12 @@
 const characters = [
   {
+    name: "Luke Skywalker",
+    height: "172",
+    mass: "77",
+    eye_color: "blue",
+    gender: "male",
+  },
+  {
     name: "Darth Vader",
     height: "202",
     mass: "136",
