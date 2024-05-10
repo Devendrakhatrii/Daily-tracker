@@ -1,5 +1,5 @@
-import { CardWithForm } from "./components/CardWithForm";
-import { ChangePassword } from "./components/ChangePassword";
+import { CardWithForm } from "./pages/CardWithForm";
+import { ChangePassword } from "./pages/ChangePassword";
 
 function App() {
   return (

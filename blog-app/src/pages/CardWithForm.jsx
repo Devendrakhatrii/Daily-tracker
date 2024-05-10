@@ -14,9 +14,9 @@ export function CardWithForm() {
   return (
     <Card className="w-[300px]">
       <CardHeader className="text-center">
-        <CardTitle>Finally you're Back!</CardTitle>
+        <CardTitle>Finally you &apos;re Back!</CardTitle>
         <CardDescription>
-          Join every one's favourite blog app Again!
+          Join every one &apos;s favourite blog app Again!
         </CardDescription>
       </CardHeader>
       <CardContent>
