@@ -1,5 +1,5 @@
-import React from "react";
 
-export default function Navigation() {
+
+export default function NavigationPage() {
   return <div>Navigation</div>;
 }
