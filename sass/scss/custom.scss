@@ -1,0 +1,17 @@
+$primary: #dada;
+
+$theme-colors: (
+  "primary": $primary,
+);
+$custom-colors: (
+  "custom-color": #900,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.btn-primary {
+  color: white;
+}
