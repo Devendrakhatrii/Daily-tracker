@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-export default function LoginPage() {
+export function LoginPage() {
   return (
     <section className=" h-screen flex justify-center items-center py-10">
       <Card className="mx-auto max-w-sm my-auto">
@@ -20,7 +20,7 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
+          <div className="grid gap-4   ">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input

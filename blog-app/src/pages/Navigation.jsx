@@ -1,5 +1,3 @@
-
-
-export default function NavigationPage() {
+export function NavigationPage() {
   return <div>Navigation</div>;
 }
