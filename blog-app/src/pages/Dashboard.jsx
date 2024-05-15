@@ -16,6 +16,7 @@ import {
   Users2,
   User,
   Bookmark,
+  CircleFadingPlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,21 +37,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-} from "@/components/ui/pagination";
-import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import {
   Tooltip,
   TooltipContent,
@@ -77,7 +64,7 @@ export function DashboardPage() {
                   href="#"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
-                  <Home className="h-5 w-5" />
+                  <User className="h-5 w-5" />
                   <span className="sr-only">Dashboard</span>
                 </Link>
               </TooltipTrigger>
@@ -91,11 +78,11 @@ export function DashboardPage() {
                   href="#"
                   className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
-                  <ShoppingCart className="h-5 w-5" />
-                  <span className="sr-only">Orders</span>
+                  <Bookmark className="h-5 w-5" />
+                  <span className="sr-only">Library</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Orders</TooltipContent>
+              <TooltipContent side="right">Library</TooltipContent>
             </Tooltip>
           </TooltipProvider>
           <TooltipProvider>
@@ -105,7 +92,7 @@ export function DashboardPage() {
                   href="#"
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
-                  <Package className="h-5 w-5" />
+                  <CircleFadingPlus className="h-5 w-5" />
                   <span className="sr-only">Products</span>
                 </Link>
               </TooltipTrigger>
@@ -168,7 +155,7 @@ export function DashboardPage() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="sm:max-w-xs">
-          <nav className="grid gap-6 text-lg font-medium">
+              <nav className="grid gap-6 text-lg font-medium">
                 <Link
                   href="#"
                   className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
@@ -205,7 +192,7 @@ export function DashboardPage() {
                   Settings
                 </Link>
               </nav>
-           </SheetContent>
+            </SheetContent>
           </Sheet>
           <div className="relative ml-auto flex-1 md:grow-0">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
