@@ -1,30 +1,30 @@
 import { useState } from "react";
+import { Admin, User } from "./Acess";
 
 const Contact = () => {
-  const [name, setName] = useState("");
-  const message = (name) => {
-    name.toLowerCase() === "singdha" ? <Admin /> : <User />;
-  };
+  const [name, setName] = useState(false);
+  const [submit, setSubmit] = useState(false);
+  // const message = (name) => {
+  //   name.toLowerCase() === "snigdha" ? <Admin /> : <User />;
+  // };
   return (
     <>
       <input id="name" type="text" placeholder="Enter your first name." />
       <button
         onClick={() => {
-          message(document.querySelector("#name").value);
+          setName(document.querySelector("#name").value);
+          setSubmit(true);
         }}
       >
         Submit
       </button>
+      {submit && name.toLowerCase() === "snigdha" ? (
+        <Admin />
+      ) : submit ? (
+        <User />
+      ) : null}
     </>
   );
-};
-
-const Admin = () => {
-  return <>welcome admin</>;
-};
-
-const User = () => {
-  return <>welcome user</>;
 };
 
 export default Contact;
