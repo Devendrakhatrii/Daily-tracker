@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-export function SignupPage() {
+
+const SignupPage = () => {
   return (
     <section className=" h-screen flex justify-center items-center py-5">
       <Card className=" max-w-sm">
@@ -61,4 +62,6 @@ export function SignupPage() {
       </Card>
     </section>
   );
-}
+};
+
+export default SignupPage;
