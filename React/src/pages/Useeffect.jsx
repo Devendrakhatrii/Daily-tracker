@@ -17,18 +17,22 @@ const Useeffect = () => {
     };
     fetchData();
   }, []);
-  const { id, title, body } = datas;
-  return (
-    <>
-      {datas.length > 0 && (
-        <table border={2}>
+  return<>
+        <table  key={index} border={2}>
           <thead>
+      {datas.length > 0 && datas.map((item,index)=>{
+
+        return(
             <tr>
               <th>Id</th>
               <th>Title</th>
               <th>Body</th>
             </tr>
-          </thead>
+        )
+      }
+    )}
+      </thead>
+
           <tbody>
             {datas.map((item, index) => {
               return (
@@ -41,9 +45,8 @@ const Useeffect = () => {
             })}
           </tbody>
         </table>
-      )}
+
     </>
-  );
-};
+
 
 export default Useeffect;
