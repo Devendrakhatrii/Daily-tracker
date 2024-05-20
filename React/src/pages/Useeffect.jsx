@@ -2,23 +2,48 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Useeffect = () => {
-  const [posts, setPosts] = useState([]);
+  const [datas, setDatas] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("https://dummyjson.com/posts");
+        const { data } = await axios("https://dummyjson.com/posts");
         console.log(data);
         console.log(data.posts);
-        setPosts(data.posts);
+        setDatas(data.posts);
         return data;
       } catch (error) {
-        console.log(error.message);
+        console.error(error);
       }
     };
     fetchData();
   }, []);
-
-  return <div>Useeffect</div>;
+  const { id, title, body } = datas;
+  return (
+    <>
+      {datas.length > 0 && (
+        <table border={2}>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            {datas.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td>{item.id}</td>
+                  <td>{item.title}</td>
+                  <td>{item.body}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
+    </>
+  );
 };
 
 export default Useeffect;
