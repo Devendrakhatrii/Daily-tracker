@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-export function LoginPage() {
+
+const LoginPage = () => {
   return (
     <section className=" h-screen flex justify-center items-center py-10">
       <Card className="mx-auto max-w-sm my-auto">
@@ -59,4 +60,6 @@ export function LoginPage() {
       </Card>
     </section>
   );
-}
+};
+
+export default LoginPage;

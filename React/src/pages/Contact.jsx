@@ -4,7 +4,9 @@ import { Admin, User } from "./Acess";
 const Contact = () => {
   const [name, setName] = useState("");
   const [submit, setSubmit] = useState(false);
-
+  // const message = (name) => {
+  //   name.toLowerCase() === "snigdha" ? <Admin /> : <User />;
+  // };
   return (
     <>
       <input id="name" type="text" placeholder="Enter your first name." />
