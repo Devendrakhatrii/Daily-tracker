@@ -15,14 +15,8 @@ const App = () => {
   return (
     <>
       {/* <About />
-<<<<<<< HEAD
       <Contact /> */}
       <Demo />
-=======
-      <Contact />
-      <Demp data={users} /> */}
-      <Useeffect />
->>>>>>> ee3b627c365631abe43b5141b9143b3a455b15c8
     </>
   );
 };
