@@ -4,22 +4,23 @@ import axios from "axios";
 
 const Demo = () => {
   const [search, setSearch] = useState("");
-  const [receipe, setReceipe] = useState([]);
-  const [url, setUrl] = useState(
-    "https://dummyjson.com/recipes?limit=10&skip=10&select=name,image"
-  );
+  const [detail, setDetail] = useState([]);
+  const [ingrediants, setIngredinats] = useState(false);
+  const [instructions, setInstruction] = useState(false);
 
   useEffect(() => {
-    const func = async () => {
+    const getDetails = async () => {
       try {
-        const { data } = await axios(url);
+        const { data } = await axios.get(
+          "https://dummyjson.com/recipes?limit=1&skip=10&select=name,image"
+        );
         console.log(data);
-        setReceipe(data);
+        setDetail(data);
       } catch (error) {
         console.error(error);
       }
     };
-    func();
+    getDetails();
   }),
     [];
 
@@ -42,22 +43,29 @@ const Demo = () => {
           <label>image</label>
         </div>
         <div>
+          <input type="checkbox" id="horns" name="horns" />
+          <label>ingrediants</label>
+        </div>
+        <div>
           <input
             type="checkbox"
             id="horns"
             name="horns"
             onChange={() => {
-              url + "";
+              url + "instructions";
             }}
           />
-          <label>ingrediants</label>
-        </div>
-        <div>
-          <input type="checkbox" id="horns" name="horns" />
           <label>instructions</label>
         </div>
         <div>
-          <input type="checkbox" id="horns" name="horns" />
+          <input
+            type="checkbox"
+            id="horns"
+            name="horns"
+            onChange={() => {
+              url + "ingrediants";
+            }}
+          />
           <label>servings</label>
         </div>
         <input
@@ -68,6 +76,10 @@ const Demo = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </fieldset>
+
+      <div>
+        <h1>{detail.name}</h1>
+      </div>
     </>
   );
 };
