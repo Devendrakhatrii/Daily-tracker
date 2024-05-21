@@ -3,17 +3,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Demo = () => {
-  const [query, setQuery] = useState("phone");
-  const [products, setProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [receipe, setReceipe] = useState([]);
+  const [url, setUrl] = useState(
+    "https://dummyjson.com/recipes?limit=10&skip=10&select=name,image"
+  );
 
   useEffect(() => {
     const func = async () => {
       try {
-        const { data } = await axios(
-          `https://dummyjson.com/products/search?q=${query}`
-        );
-        // console.log(data);
-        setProducts(data?.products || []);
+        const { data } = await axios(url);
+        console.log(data);
+        setReceipe(data);
       } catch (error) {
         console.error(error);
       }
@@ -21,20 +22,52 @@ const Demo = () => {
     func();
   }),
     [];
+
+  const changeUrl = () => {};
+
+  //serving name instructions ingrediants image
+
   return (
     <>
-      <input
-        type="text"
-        name=""
-        placeholder="Enter product:"
-        id=""
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      {products.map((item) => {
-        <ol key={item.id}>
-          <li>{item.title}</li>;
-        </ol>;
-      })}
+      <fieldset>
+        <legend>Receipe:</legend>
+
+        <div>
+          <input type="checkbox" id="scales" name="scales" checked disabled />
+          <label>name</label>
+        </div>
+
+        <div>
+          <input type="checkbox" id="horns" name="horns" checked disabled />
+          <label>image</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="horns"
+            name="horns"
+            onChange={() => {
+              url + "";
+            }}
+          />
+          <label>ingrediants</label>
+        </div>
+        <div>
+          <input type="checkbox" id="horns" name="horns" />
+          <label>instructions</label>
+        </div>
+        <div>
+          <input type="checkbox" id="horns" name="horns" />
+          <label>servings</label>
+        </div>
+        <input
+          type="text"
+          name=""
+          placeholder="Search Receipe:"
+          id=""
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </fieldset>
     </>
   );
 };
