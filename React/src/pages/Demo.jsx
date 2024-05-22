@@ -68,6 +68,11 @@ const Demo = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </fieldset>
+      <div>
+        {receipe.map((item) => {
+          return <h1>{item.name}</h1>;
+        })}
+      </div>
     </>
   );
 };
