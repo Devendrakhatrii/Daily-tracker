@@ -7,13 +7,14 @@ function App() {
   const [rating, setRating] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://dummyjson.com/recipes/search?q=Margherita&select=name,image,rating,instructions,ingredients&?limit=50&skip=10"
+          `https://dummyjson.com/recipes/search?q=${query}&select=name,image,rating,instructions,ingredients&?limit=50&skip=10`
         );
         const data = await response.json();
         setRecipes(data.recipes);
@@ -26,14 +27,13 @@ function App() {
       }
     };
     getData();
-  }, []);
+  }, [query]);
 
-  if (loading) return <h1>Loading...</h1>;
+  // if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Something went wrong!</h1>;
 
-  const searchRecipe = (query) => {
-    let result = recipes.includes(query);
-    console.log(result);
+  const searchRecipe = (key) => {
+    setQuery(key);
   };
 
   return (
@@ -67,45 +67,48 @@ function App() {
           type="checkbox"
           name="rating"
           id=""
-          checked
           onChange={() => setRating(!rating)}
         />
         <label htmlFor="rating">rating</label>
       </div>
       <ul>
-        {recipes.map((item, index) => {
-          return (
-            <>
-              <div>
-                <li key={index}>
-                  <h1>{item.name}</h1>
-                </li>
-                <img src={`${item.image}`} alt="" id="recipe-img" />
-              </div>
-              {ingredients && (
+        {recipes.length > 0 ? (
+          recipes.map((item, index) => {
+            return (
+              <>
                 <div>
-                  <h3>Ingrediants</h3>
-                  {item.ingredients.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
+                  <li key={index}>
+                    <h1>{item.name}</h1>
+                  </li>
+                  <img src={`${item.image}`} alt="" id="recipe-img" />
                 </div>
-              )}
-              {instructions && (
-                <div>
-                  <h3>Instructions</h3>
-                  {item.instructions.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </div>
-              )}
-              {rating && (
-                <div>
-                  <h3>Rating : {item.rating}</h3>
-                </div>
-              )}
-            </>
-          );
-        })}
+                {ingredients && (
+                  <div>
+                    <h3>Ingrediants</h3>
+                    {item.ingredients.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </div>
+                )}
+                {instructions && (
+                  <div>
+                    <h3>Instructions</h3>
+                    {item.instructions.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </div>
+                )}
+                {rating && (
+                  <div>
+                    <h3>Rating : {item.rating}</h3>
+                  </div>
+                )}
+              </>
+            );
+          })
+        ) : (
+          <h1>Item not found</h1>
+        )}
       </ul>
     </>
   );
