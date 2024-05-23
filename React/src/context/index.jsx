@@ -14,7 +14,7 @@ const UserConsumer = ({ children }) => {
 
   return (
     <userContext.Provider value={{ user, setUser }}>
-      {Children}
+      {children}
     </userContext.Provider>
   );
 };
