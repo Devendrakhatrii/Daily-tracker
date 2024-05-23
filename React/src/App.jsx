@@ -5,23 +5,31 @@ function App() {
   const [ingredients, setIngredients] = useState(false);
   const [instructions, setInstructions] = useState(false);
   const [rating, setRating] = useState(false);
-  const [search, setSearch] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
-          "https://dummyjson.com/recipes?limit=50&skip=10&select=name,image,ingredients,instructions,rating"
+          "https://dummyjson.com/recipes/search?q=Margherita&select=name,image,rating,instructions,ingredients&?limit=50&skip=10"
         );
         const data = await response.json();
         setRecipes(data.recipes);
         console.log(data.recipes);
       } catch (error) {
+        setError(error);
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
     getData();
   }, []);
+
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <h1>Something went wrong!</h1>;
 
   const searchRecipe = (query) => {
     let result = recipes.includes(query);
