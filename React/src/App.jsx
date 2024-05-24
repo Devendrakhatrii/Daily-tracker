@@ -1,33 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useFetch from "./hooks/useFetch";
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipe, setRecipe] = useState([]);
   const [ingredients, setIngredients] = useState(false);
   const [instructions, setInstructions] = useState(false);
   const [rating, setRating] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          `https://dummyjson.com/recipes/search?q=${query}&select=name,image,rating,instructions,ingredients&?limit=50&skip=10`
-        );
-        const data = await response.json();
-        setRecipes(data.recipes);
-        console.log(data.recipes);
-      } catch (error) {
-        setError(error);
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getData();
-  }, [query]);
+  const { data, error, loading } = useFetch(
+    `https://dummyjson.com/recipes/search?q=${query}&select=name,image,rating,instructions,ingredients&?limit=50&skip=10`
+  );
+
+  const { recipes } = data;
+  setRecipe(recipes);
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Something went wrong!</h1>;
@@ -72,8 +59,8 @@ function App() {
         <label htmlFor="rating">rating</label>
       </div>
       <ul>
-        {recipes.length > 0 ? (
-          recipes.map((item, index) => {
+        {recipe.length > 0 ? (
+          recipe.map((item, index) => {
             return (
               <>
                 <div>
