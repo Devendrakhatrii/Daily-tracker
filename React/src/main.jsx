@@ -8,7 +8,7 @@ import Product from "./pages/Product.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserConsumer>
-      <App />
+      {/* <App /> */}
       <Product />
     </UserConsumer>
   </React.StrictMode>
