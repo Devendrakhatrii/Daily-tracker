@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from "axios";
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -8,15 +9,17 @@ const useFetch = (url) => {
 
   useEffect(() => {
     const getData = async () => {
+      const controller = new AbortController();
+      const signal = controller.signal;
       try {
         setLoading(true);
-        const response = await fetch(url);
-        const detail = await response.json();
-        console.log(detail);
-        setData(detail);
+        const { data } = await axios(url, signal);
+        console.log(data);
+        setData(data);
+        return controller.abort();
       } catch (error) {
-        setError(error);
-        console.log(error);
+        setError(true);
+        console.error(error);
       } finally {
         setLoading(false);
       }
@@ -24,7 +27,7 @@ const useFetch = (url) => {
     getData();
   }, [url]);
 
-  return { data, error, loading };
+  return { data, loading, error };
 };
 
 export default useFetch;
